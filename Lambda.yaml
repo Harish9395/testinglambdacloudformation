@@ -1,0 +1,13 @@
+Resources:
+  LambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: lambdaexampletesting56789t
+      Handler: test_index.handler
+      Runtime: nodejs14.x
+      Role: 'arn:aws:iam::938152492896:role/lambdas3role'
+      MemorySize: 1024
+      Code:
+        S3Bucket: lambdaexecutionbucket1
+        S3Key: test.zip
+
