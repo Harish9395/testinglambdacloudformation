@@ -31,5 +31,5 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    shell: Bash
-                    command: "#!/bin/bash\r\nls\r\n\r\n"
+                    shell: Sh
+                    command: "ls "
