@@ -32,4 +32,4 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Bash
-                    command: "pwd\r\n#zip -9 lambda.zip /testinglambdacloudformation/*\r\n"
+                    command: "#!/bin/bash\r\npwd\r\n\r\n"
