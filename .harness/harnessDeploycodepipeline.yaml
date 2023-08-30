@@ -32,4 +32,4 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: "ls -al\r\n#zip -9 lambda.zip /testinglambdacloudformation/*\r\n"
+                    command: "ls -lsa\r\n#zip -9 lambda.zip /testinglambdacloudformation/*\r\n"
