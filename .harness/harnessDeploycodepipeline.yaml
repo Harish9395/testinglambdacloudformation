@@ -32,4 +32,4 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Bash
-                    command: "#!/bin/bash\r\npwd\r\n\r\n"
+                    command: "#!/bin/bash\r\npwd\r\nls\r\n\r\n"
