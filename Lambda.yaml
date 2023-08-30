@@ -10,4 +10,3 @@ Resources:
       Code:
         S3Bucket: lambdaexecutionbucket1
         S3Key: test.zip
-
