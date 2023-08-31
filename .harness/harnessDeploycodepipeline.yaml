@@ -32,4 +32,4 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: ls
+                    command: zip -9 Lambda.zip Lambda.yaml
