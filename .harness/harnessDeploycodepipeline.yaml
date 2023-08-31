@@ -66,11 +66,6 @@ pipeline:
                   timeout: 10m
         tags: {}
   variables:
-    - name: Accesskey
-      type: Secret
-      description: ""
-      required: false
-      value: Accesskey
     - name: Secretkey
       type: Secret
       description: ""
