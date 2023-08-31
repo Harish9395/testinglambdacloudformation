@@ -65,9 +65,3 @@ pipeline:
                       roleArn: ""
                   timeout: 10m
         tags: {}
-  variables:
-    - name: Secretkey
-      type: Secret
-      description: ""
-      required: false
-      value: Secretkey
