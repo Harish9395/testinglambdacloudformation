@@ -46,4 +46,4 @@ pipeline:
                   identifier: CreateStack
                   spec:
                     shell: Sh
-                    command: "aws cloudformation deploy --template-file --stack-name Infracdeopileinetesting --s3-bucket s3://mytestlambdas3code/InfraCodepipeline.yml\r\naws codepipeline start-pipeline-execution --name DepolyInfraCodepipeline"
+                    command: "aws cloudformation deploy --template-file InfraCodepipeline.yml  --s3-bucket s3://mytestlambdas3code/ --stack-name Infracdeopileinetesting\r\naws codepipeline start-pipeline-execution --name DepolyInfraCodepipeline"
