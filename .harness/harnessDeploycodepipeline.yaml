@@ -40,3 +40,10 @@ pipeline:
                   spec:
                     shell: Sh
                     command: "aws configure set aws_access_key_id AKIA5U3R675QNZZ2AJET\r\naws configure set aws_secret_access_key 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\r\naws s3 cp Lambda.zip s3://mytestlambdas3code/\r\naws s3 cp InfraCodepipeline.yml s3://mytestlambdas3code/"
+              - step:
+                  type: Run
+                  name: CreateStack
+                  identifier: CreateStack
+                  spec:
+                    shell: Sh
+                    command: "aws cloudformation deploy --template-file --stack-name Infracdeopileinetesting --s3-bucket s3://mytestlambdas3code/InfraCodepipeline.yml\r\naws codepipeline start-pipeline-execution --name DepolyInfraCodepipeline"
