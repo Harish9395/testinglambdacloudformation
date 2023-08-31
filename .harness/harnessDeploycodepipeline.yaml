@@ -39,7 +39,7 @@ pipeline:
                   identifier: Run_2
                   spec:
                     shell: Sh
-                    command: "aws configure set aws_access_key_id $Accesskey\r\naws configure set aws_secret_access_key $Secretkey\r\naws s3 cp Lambda.zip s3://mytestlambdas3code/\r\naws s3 cp InfraCodepipeline.yml s3://mytestlambdas3code/"
+                    command: "aws configure set aws_access_key_id <+pipeline.variables.Accesskey>\r\naws configure set aws_secret_access_key $Secretkey\r\naws s3 cp Lambda.zip s3://mytestlambdas3code/\r\naws s3 cp InfraCodepipeline.yml s3://mytestlambdas3code/"
     - stage:
         name: DeployStack
         identifier: DeployStack
@@ -65,3 +65,9 @@ pipeline:
                       roleArn: ""
                   timeout: 10m
         tags: {}
+  variables:
+    - name: Accesskey
+      type: Secret
+      description: ""
+      required: false
+      value: Accesskey
