@@ -4,7 +4,10 @@ Description: Codepipeline for Infra creation
 Parameters: 
   S3Bucketname: 
     Type: String 
-    Default: testingcodepipelinelambda123
+    Default: testingcodepipelinelambdartifact  
+  S3BucketObjectKey: 
+    Type: String 
+    Default: core.zip
 
 Resources: 
   ArtifactS3bucket: 
@@ -82,7 +85,7 @@ Resources:
   DeployPipeline: 
     Type: AWS::CodePipeline::Pipeline 
     Properties: 
-      Name: DepolyInfraCodepipeline
+      Name: DepolyInfraCodepipeline12
       RoleArn: "arn:aws:iam::938152492896:role/service-role/AWSCodePipelineServiceRole-us-east-2-testingpipeline"
       ArtifactStore: 
         Type: S3 
@@ -97,8 +100,8 @@ Resources:
                   Provider: S3
                   Version: "1" 
                 Configuration: 
-                  S3Bucket: "mytestlambdas3code"
-                  S3ObjectKey: "Lambda.zip" 
+                  S3Bucket: "infratests3bucket123"
+                  S3ObjectKey: !Ref S3BucketObjectKey
                   PollForSourceChanges: "false"
                 OutputArtifacts: 
                   - Name: InfraCfnSource 
@@ -118,9 +121,9 @@ Resources:
                 Configuration: 
                   ActionMode: CHANGE_SET_REPLACE 
                   RoleArn: "arn:aws:iam::938152492896:role/CloudformationRole"
-                  StackName: CodepipelineCreateStack
-                  ChangeSetName: codepipelineCreatechangeset
-                  TemplatePath: !Sub "InfraCfnSource::Lambda.yaml" 
+                  StackName: CodepipelineCreateStackInfraLambda
+                  ChangeSetName: codepipelineCreatechangeset1
+                  TemplatePath: !Sub "InfraCfnSource::Core/Lambda.yaml" 
                 OutputArtifacts:
                   - Name: LambdaChangeSet
                 RunOrder: 2 
@@ -138,9 +141,9 @@ Resources:
                   - Name: LambdaChangeSet 
                 Configuration: 
                   ActionMode: CHANGE_SET_EXECUTE 
-                  ChangeSetName: codepipelineCreatechangeset
+                  ChangeSetName: codepipelineCreatechangeset1
                   RoleArn: "arn:aws:iam::938152492896:role/CloudformationRole"
-                  StackName: CodepipelineCreateStack
+                  StackName: CodepipelineCreateStackInfraLambda
                   OutputFileName: "LambdaOutput.json"
                 OutputArtifacts:
                   - Name: LambdaOutput
